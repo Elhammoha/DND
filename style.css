@@ -7,7 +7,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url('BACKGROUND.PNG');
+    background-image: url("BACKGROUND.PNG");
     background-size: cover;
 }
 header {
