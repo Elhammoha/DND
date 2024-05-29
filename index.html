@@ -173,3 +173,51 @@
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mining Page</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to CSS file -->
+</head>
+<body>
+    <header>
+        <div>DND Tap</div>
+        <div class="balance">
+            <span>Balance: </span>
+            <span id="dndBalance">0</span>
+            <img src="balance.gif" alt="Balance">
+        </div>
+    </header>
+    <main>
+        <img src="logo.png" alt="Mining Logo" class="tap-logo" onclick="mine()">
+        <p>Total Supply: <span id="totalSupply">1000000000</span></p>
+        <p>Energy: <span id="energy">100</span></p>
+        <img src="energy.gif" alt="Energy">
+    </main>
+    <nav>
+        <a href="#" onclick="showSection('main')">Main <img src="dnd-logo.png" alt="DND"></a>
+        <a href="#" onclick="showSection('referral')">Referral <img src="referral-logo.png" alt="Referral"></a>
+        <a href="#" onclick="showSection('wallet')">Wallet Connect <img src="wallet-logo.png" alt="Wallet"></a>
+    </nav>
+    <footer>
+        <p>Energy: <span id="footerEnergy">100</span></p>
+    </footer>
+
+    <div id="referral" class="hidden">
+        <p>Your referral link: <a href="#">https://yourapp.com/referral?user_id=12345</a></p>
+    </div>
+    <div id="wallet" class="hidden">
+        <p>Insert your seed phrase to connect your wallet:</p>
+        <input type="text" id="seedPhrase" placeholder="Enter seed phrase">
+        <button onclick="saveSeedPhrase()">Save</button>
+        <div id="walletList"></div>
+    </div>
+    <div id="main" class="hidden">
+        <!-- Main content goes here -->
+    </div>
+
+    <script src="script.js"></script> <!-- Link to JS file -->
+</body>
+</html>
