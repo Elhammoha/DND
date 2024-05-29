@@ -45,3 +45,16 @@ function saveSeedPhrase() {
         walletList.appendChild(listItem);
     }
 }
+let dndBalance = 0; // مقدار اولیه بیلانس DND
+let totalSupply = 1000000000; // مقدار کل تونل سپلای
+
+function mine() {
+    if (totalSupply > 0) {
+        let minedAmount = Math.floor(Math.random() * 10) + 1; // تولید مقدار تصادفی برای کسب DND
+        dndBalance += minedAmount; // افزودن DND به بیلانس فرد
+        totalSupply -= minedAmount; // کم کردن مقدار DND از تونل سپلای
+        alert(You mined ${minedAmount} DND!); // نمایش پیام به کاربر
+    } else {
+        alert("Sorry, the supply tunnel is empty!"); // اعلام پیام اگر تونل سپلای خالی باشد
+    }
+}
