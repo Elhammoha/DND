@@ -12,7 +12,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: #f2f2f2;
+            background-image: url('background.jpg');
+            background-size: cover;
         }
         header {
             background-color: #333;
@@ -38,10 +39,15 @@
         main {
             text-align: center;
             margin: 20px 0;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         .tap-logo {
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
             cursor: pointer;
             transition: transform 0.1s;
         }
@@ -93,20 +99,21 @@
     </header>
     <main>
         <img src="logo.png" alt="Mining Logo" class="tap-logo" onclick="mine()">
+        <p>Total Supply: <span id="totalSupply">1000000000</span></p>
         <p>Energy: <span id="energy">100</span></p>
         <img src="energy.gif" alt="Energy">
     </main>
     <nav>
         <a href="#" onclick="showSection('main')">Main <img src="dnd-logo.png" alt="DND"></a>
-        <a href="#" onclick="showSection('referral')">Referral <img src="referral-logo1.png" alt="Referral"></a>
-        <a href="#" onclick="showSection('wallet')">Wallet Connect <img src="wallet-logo2.png" alt="Wallet"></a>
+        <a href="#" onclick="showSection('referral')">Referral <img src="referral-logo.png" alt="Referral"></a>
+        <a href="#" onclick="showSection('wallet')">Wallet Connect <img src="wallet-logo.png" alt="Wallet"></a>
     </nav>
     <footer>
-        <p>Energy: 100</p>
+        <p>Energy: <span id="footerEnergy">100</span></p>
     </footer>
 
     <div id="referral" class="hidden">
-        <p>Your referral link: <a href="https://yourapp.com/referral?user_id=12345">https://yourapp.com/referral?user_id=12345</a></p>
+        <p>Your referral link: <a href="#">https://yourapp.com/referral?user_id=12345</a></p>
     </div>
     <div id="wallet" class="hidden">
         <p>Insert your seed phrase to connect your wallet:</p>
@@ -124,18 +131,20 @@
         let totalSupply = 1000000000;
 
         function mine() {
-            if (energy > 0) {
-                energy--;
+            if (energy > 0) {energy--;
                 let minedAmount = Math.random() < 0.1 ? 10 : Math.floor(Math.random() * 9) + 1;
                 dndBalance += minedAmount;
                 totalSupply -= minedAmount;
                 document.getElementById('dndBalance').innerText = dndBalance;
-              document.getElementById('energy').innerText = energy;
+                document.getElementById('totalSupply').innerText = totalSupply;
+                document.getElementById('energy').innerText = energy;
+                document.getElementById('footerEnergy').innerText = energy;
                 alert(You mined ${minedAmount} DND!);
                 if (energy === 0) {
                     setTimeout(() => {
                         energy = 100;
                         document.getElementById('energy').innerText = energy;
+                        document.getElementById('footerEnergy').innerText = energy;
                     }, 3600000); // 1 hour
                 }
             } else {
