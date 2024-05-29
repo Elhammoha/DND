@@ -7,7 +7,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url('background.jpg');
+    background-image: url('BACKGROUND.PNG');
     background-size: cover;
 }
 header {
@@ -41,8 +41,8 @@ main {
     align-items: center;
 }
 .tap-logo {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     cursor: pointer;
     transition: transform 0.1s;
 }
