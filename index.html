@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video with Text and AI Voice Overlay</title>
+    <style>
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+        }
+        .video-container video {
+            width: 100%;
+            height: auto;
+        }
+        .overlay-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <video id="video" controls>
+            <source src="ai.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="overlay-text" id="overlayText">Introducing CryptoClicker: Your Fun and Profitable Crypto Mining Game!
+
+Dive into the world of cryptocurrency with CryptoClicker, the newest and most exciting crypto mining game. Click on logos of popular cryptocurrencies like Bitcoin (BTC), Ethereum (ETH), Ripple (XRP), TRON (TRX), and Binance Coin (BNB) to earn real coins.
+Key Features
+
+    Diverse Crypto Options: Choose from Bitcoin, Ethereum, Ripple, TRON, and Binance Coin.
+    Instant Rewards: Every click earns you real coins instantly.
+    Interactive Gameplay: Enjoy a unique combination of gaming and crypto mining.
+    Leaderboards and Challenges: Compete globally and climb the leaderboards.
+    Secure and Trustworthy: Advanced encryption ensures your safety.
+
+Why Play CryptoClicker?
+
+    Learn and Earn: Perfect for beginners to learn about cryptocurrencies.
+    Easy Access: No need for expensive setups; just click and earn.
+    Community: Join a vibrant community of crypto enthusiasts.
+
+Start Your Journey
+
+Download CryptoClicker now and start clicking your way to crypto riches. Whether you're looking to grow your portfolio or just have fun, CryptoClicker is the game for you.
+
+Click, earn, and enjoy with CryptoClicker!</div>
+    </div>
+
+    <script>
+        const video = document.getElementById('video');
+        const overlayText = document.getElementById('overlayText').innerText;
+        
+        // Function to speak the text using Web Speech API
+        function speak(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            speechSynthesis.speak(utterance);
+        }
+
+        video.addEventListener('play', () => {
+            speak(overlayText);
+        });
+
+        video.addEventListener('pause', () => {
+            speechSynthesis.cancel();
+        });
+
+        video.addEventListener('ended', () => {
+            speechSynthesis.cancel();
+        });
+    </script>
+</body>
+</html>
